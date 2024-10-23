@@ -1,4 +1,4 @@
-package day02;
+package tests.day02;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -56,17 +56,17 @@ public class Arabam {
         // arac olarak Volkswagen secilir
        Thread.sleep(2000);
         TouchAction action=new TouchAction<>(driver);
-        action.press(PointOption.point(528,1801)).
+        action.press(PointOption.point(533,1801)).
                 waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).
                 // baslangic noktasiyla bitis noktasi arasindaki gecen sure
                 // eger sure azalirsa; gidilen yol mesafesi ARTAR. eger sureyi arttirirsan; gidilen yol mesafesi AZALIR !!
                 // yani tamamen bir ters oranti vardir. ekranda daha fazla asagi ya da yukari gitmek istiyorsak birim zamanda sureyi azaltmaliyiz
-                moveTo(PointOption.point(528,528))
+                moveTo(PointOption.point(533,384))
                 .release()
                 .perform();
         //press yaptik, cünkü kaydirmaya baslamadan önce ekrana dokunmamiz gerekiyor
 
-        Thread.sleep(2000);
+        Thread.sleep(2500);
         driver.findElementByXPath("//*[@text='Volkswagen']").click();
 
        // arac markasi olarak passat secilir
@@ -79,11 +79,16 @@ public class Arabam {
         driver.findElementByXPath("//*[@text='Comfortline']").click();
 
         // Ucuzdan pahaliya siralama yaparak filtreleme yapilir
-
-
-
+        Thread.sleep(1000);
+        action.press(PointOption.point(402,406)).release().perform();
+        Thread.sleep(1000);
+        driver.findElementByXPath("//*[@text='Fiyat - Ucuzdan Pahalıya']").click();
 
         // Gelen en ucuz aracin 500.000 tl den buyuk oldugu dogrulanir
+       String fiyat =driver.findElementByXPath("(//*[@index='3'])[3]").getText();
+       fiyat=fiyat.replaceAll("\\D","");
+
+        Assert.assertTrue(Integer.parseInt(fiyat)>500000);
 
     }
 
