@@ -24,11 +24,40 @@ public class KiwiPage {
   @FindBy(xpath="//*[@text='From:']")
   public WebElement frombutonu;
 
-  @FindBy(xpath="//*[@accessibility id='Clear All']")
+  @FindBy(xpath="//*[@content-desc='Clear All']")
   public WebElement clearbutonu;
 
   @FindBy(xpath="//*[@class='android.widget.EditText']")
-  public WebElement kalkisYazmakutusu;
+  public WebElement kalkisVarisYazmakutusu;
+
+
+  @FindBy(xpath="(//*[@content-desc='Add destination'])[1]")
+  public WebElement kalkisbutonu;
+
+  @FindBy(xpath="//*[@text='Choose']")
+  public WebElement secimbutonu;
+
+  @FindBy(xpath="//*[@text='To:']")
+  public WebElement tobutonu;
+
+  @FindBy(xpath="//*[@text='Departure:']")
+  public WebElement tarihbutonu;
+
+  @FindBy(xpath="//*[@text='Set date']")
+  public WebElement SetDatebutonu;
+
+  @FindBy(xpath="(//*[@text='Search'])[1]")
+  public WebElement Seachbutonu;
+
+  @FindBy(xpath="//*[@text='Best']")
+  public WebElement bestbutonu;
+
+  @FindBy(xpath="//*[@text='Cheapest']")
+  public WebElement enucuzbutonu;
+
+  @FindBy(xpath="(//*[@class='android.widget.TextView'])[12]")
+  public WebElement fiyatbutonu;
+
 
   }
 

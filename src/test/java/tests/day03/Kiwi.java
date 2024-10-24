@@ -11,11 +11,6 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class Kiwi {
-// varis ulkesi secenegine tiklanir ve gidilecek ulke girilir
-// gidis tarihi ekim ayinin 30 u olarak secilir ve set date e tiklanir
-// search butonuna tiklanir
-// en  ucuz ve aktarmasiz filtrelemeleri yapilir
-// gelen bilet fiyati kaydedilir ve kullanicin telefonuna sms olarak gonderilir
 
     AndroidDriver<AndroidElement> driver = Driver.getAndroidDriver();
 
@@ -49,20 +44,58 @@ public class Kiwi {
 
             // Trip type,one way olarak secilir
         page.returnbutonu.click();
+        Thread.sleep(2000);
         page.onewaybutonu.click();
 
         // kalkis ulkesi secenegine tiklanir ve default olan ulke kaldirilir
+        Thread.sleep(2000);
         page.frombutonu.click();
+
+        Thread.sleep(2000);
         page.clearbutonu.click();
-
+        Thread.sleep(2000);
         // kalkis yapilacak ulke/sehir girilir ve sec e tiklanir
-        page.kalkisYazmakutusu.click();
-
+        page.kalkisVarisYazmakutusu.click();
+        Thread.sleep(2000);
         if (driver.isKeyboardShown()){
             driver.getKeyboard().pressKey("Ankara");
         }else {
-            page.kalkisYazmakutusu.sendKeys("Ankara");
+            page.kalkisVarisYazmakutusu.sendKeys("Ankara");
         }
+        page.kalkisbutonu.click();
+        Thread.sleep(2000);
+        page.secimbutonu.click();
+
+      // varis ulkesi secenegine tiklanir ve gidilecek ulke girilir
+        Thread.sleep(1000);
+        page.tobutonu.click();
+        Thread.sleep(2000);
+        if (driver.isKeyboardShown()){
+            driver.getKeyboard().pressKey("Frankfurt");
+        }else {
+            page.kalkisVarisYazmakutusu.sendKeys("Frankfurt");
+        }
+        page.kalkisbutonu.click();
+        Thread.sleep(2000);
+        page.secimbutonu.click();
+        Thread.sleep(2000);
+        // gidis tarihi ekim ayinin 30 u olarak secilir ve set date e tiklanir
+         page.tarihbutonu.click();
+         ReusableMethods.nextTiklamaMethodu(545,1458,500);
+         page.SetDatebutonu.click();
+        Thread.sleep(2000);
+        // search butonuna tiklanir
+         page.Seachbutonu.click();
+
+        // en  ucuz ve aktarmasiz filtrelemeleri yapilir
+         page.bestbutonu.click();
+         page.enucuzbutonu.click();
+        Thread.sleep(2000);
+       // gelen bilet fiyati kaydedilir ve kullanicin telefonuna sms olarak gonderilir
+        String fiyat=page.fiyatbutonu.getText();
+
+        driver.sendSMS("2222333444","En ucuz ucus fiyati:"+fiyat);
+
 
 
 
