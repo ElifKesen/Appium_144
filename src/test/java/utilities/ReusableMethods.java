@@ -17,7 +17,7 @@ import java.util.Date;
 
 public class ReusableMethods {
 
-    public static void nextTiklamaMethodu(int xkoordinati, int ykoordinati, int beklemesuresi) throws InterruptedException {
+    public static void koordinatTiklamaMethodu(int xkoordinati, int ykoordinati, int beklemesuresi) throws InterruptedException {
 
         TouchAction action=new TouchAction<>(Driver.getAndroidDriver());
         action.press(PointOption.point(xkoordinati,ykoordinati))
@@ -28,7 +28,20 @@ public class ReusableMethods {
             }
 
 
-
+    public static void scrollWithUiScrollableAndClick(String elementText) {
+        AndroidDriver driver = (AndroidDriver)  Driver.getAndroidDriver();
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))");
+        driver.findElementByXPath("//*[@text='" + elementText + "']").click();
     }
+
+    public static void scrollWithUiScrollable(String elementText){
+        AndroidDriver driver = (AndroidDriver)  Driver.getAndroidDriver();
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))");
+    }
+
+
+
+
+}
 
 

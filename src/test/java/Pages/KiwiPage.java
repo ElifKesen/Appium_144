@@ -30,7 +30,6 @@ public class KiwiPage {
   @FindBy(xpath="//*[@class='android.widget.EditText']")
   public WebElement kalkisVarisYazmakutusu;
 
-
   @FindBy(xpath="(//*[@content-desc='Add destination'])[1]")
   public WebElement kalkisbutonu;
 

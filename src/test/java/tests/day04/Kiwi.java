@@ -1,10 +1,8 @@
-package tests.day03;
+package tests.day04;
 
 import Pages.KiwiPage;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.touch.offset.PointOption;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.Driver;
@@ -39,7 +37,7 @@ public class Kiwi {
 
          */
         for (int i = 0; i < 3; i++) {
-            ReusableMethods.nextTiklamaMethodu(529, 2049, 500);
+            ReusableMethods.koordinatTiklamaMethodu(529, 2049, 500);
         }
 
             // Trip type,one way olarak secilir
@@ -81,7 +79,7 @@ public class Kiwi {
         Thread.sleep(2000);
         // gidis tarihi ekim ayinin 30 u olarak secilir ve set date e tiklanir
          page.tarihbutonu.click();
-         ReusableMethods.nextTiklamaMethodu(545,1458,500);
+         ReusableMethods.koordinatTiklamaMethodu(545,1458,500);
          page.SetDatebutonu.click();
         Thread.sleep(2000);
         // search butonuna tiklanir
