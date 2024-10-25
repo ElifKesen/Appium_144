@@ -3,22 +3,23 @@ package tests.day05;
 import Pages.AllCurrencypage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class AllCurrency {
+import java.io.File;
+import java.io.IOException;
 
-// cevrilen tutar screenShot olarak kaydedilir
-// Ardindan japon yeni nin tl karsiligi olan tl degeri kaydedilir
-// kullaniciya sms olarak bildirilir
+public class AllCurrency {
 
 AndroidDriver<AndroidElement>driver= Driver.getAndroidDriver();
 AllCurrencypage page=new AllCurrencypage();
 
     @Test
-    public void allcurrencyTest() throws InterruptedException {
+    public void allcurrencyTest() throws InterruptedException, IOException {
         // all currency uygulamasinin yuklendigi dogulanir
         Assert.assertTrue(driver.isAppInstalled("com.smartwho.SmartAllCurrencyConverter"));
         // uygulamanin acildigi dogrulanir
@@ -31,10 +32,29 @@ AllCurrencypage page=new AllCurrencypage();
         // cevirelecek olan para birimi Tl olarak secilir
         ReusableMethods.koordinatTiklamaMethodu(384,642,500);
         ReusableMethods.scrollWithUiScrollableAndClick("Turkish Lira");
-
-        // cevrilen tutar screenShot olarak kaydedilir
         page.bir.click();
         page.ikisifir.click();
+
+        // cevrilen tutar screenShot olarak kaydedilir
+
+       // File screenshot=driver.getScreenshotAs(OutputType.FILE);
+      //  FileUtils.copyFile(screenshot,new File("ssreenshot.jpg"));
+
+        ReusableMethods.getScreenshot("SonucEkranGoruntusu");
+
+        // Ardindan japon yeni nin tl karsiligi olan tl degeri kaydedilir
+          String cevrilenpara=page.sonucalani.getText();
+
+         // kullaniciya sms olarak bildirilir
+        driver.sendSMS("11111111111","Paranizin cevrilmis tutari: " +cevrilenpara);
+
+
+
+
+
+
+
+
 
 
 

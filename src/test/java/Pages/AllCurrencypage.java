@@ -17,6 +17,9 @@ public class AllCurrencypage {
     @FindBy (id = "com.smartwho.SmartAllCurrencyConverter:id/b00")
     public WebElement ikisifir;
 
+    @FindBy (id = "com.smartwho.SmartAllCurrencyConverter:id/EditTextCurrencyB")
+    public WebElement sonucalani;
+
 
 
 
